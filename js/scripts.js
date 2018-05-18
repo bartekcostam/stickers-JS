@@ -56,6 +56,10 @@ var draggedEl,
             barEl = document.createElement('div'),
             textareaEl = document.createElement('textarea');
 
+        var transformCSSValue = "translateX(" + Math.random() * 400 + "px) translateY(" + Math.random() * 400 + "px)";
+            
+            stickerEl.style.transform = transformCSSValue;
+
             barEl.classList.add('bar');
             stickerEl.classList.add('sticker');
 

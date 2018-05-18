@@ -41,5 +41,11 @@ border: none;
 
 .sticker .bar:hover {
 cursor: move;
+background: rgb(117, 156, 117);
 
+}
+
+.sticker:hover {
+
+    z-index:1;
 }
