@@ -6,20 +6,22 @@ var draggedEl,
     onDrag,
     onDragEnd,
     grabPointY,
-    grabPointX;
+    grabPointX,
+    createNote,
+    addNoteBtnEl;
 
 
-    onDragStart = function (ev){
-        var boundClientRect;
+    onDragStart = function (ev) {
+        var boundingClientRect;
         if (ev.target.className.indexOf('bar') === -1) {
             return;
         }
             draggedEl = this;
 
-            boundClientRect = draggedEl.getBoundingClientRect();
+            boundingClientRect = draggedEl.getBoundingClientRect();
 
-            grabPointY = getBoundingClientRect.top - ev.clientY;
-            grabPointX = getBoundingClientRect.left - ev.clientX;
+            grabPointY = boundingClientRect.top - ev.clientY;
+            grabPointX = boundingClientRect.left - ev.clientX;
             
     };
 
@@ -30,10 +32,45 @@ var draggedEl,
             var posX = ev.clientX + grabPointX,
                 posY = ev.clientY + grabPointY;
 
-            draggedEl.style.transform = "translateX(" + posX + "px) translateY("  + posY + "px)";
+            if (posX < 0) {
+                posX = 0;
+            }
+            if (posY < 0) {
+                posY = 0;
+            }
+
+            draggedEl.style.transform = "translateX(" + posX + "px) translateY(" + posY + "px)";
     };
 
+    onDragEnd = function () {
+        draggedEl = null;
+        grabPointX = null;
+        grabPointY = null;
+
+
+    };
+
+    createNote = function (){
+
+        var stickerEl = document.createElement('div'),
+            barEl = document.createElement('div'),
+            textareaEl = document.createElement('textarea');
+
+            barEl.classList.add('bar');
+            stickerEl.classList.add('sticker');
+
+            stickerEl.appendChild(barEl);
+            stickerEl.appendChild(textareaEl);
+
+            stickerEl.addEventListener('mousedown',onDragStart, false);
+
+            document.body.appendChild(stickerEl);
+    };
+
+    createNote();
+    addNoteBtnEl = document.querySelector('.addNoteBtn');
+    addNoteBtnEl.addEventListener('click', createNote, false);
     document.addEventListener('mousemove', onDrag, false);
-    document.querySelector('.sticker .bar').addEventListener('mousedown',
-    onDragStart, false);
+    document.addEventListener('mouseup', onDragEnd, false);
+    
 })();
