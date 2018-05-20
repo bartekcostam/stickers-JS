@@ -5,13 +5,13 @@ background: #696e9e;
 
 .sticker{
 padding-top: 20px;
-    background: white;
+    background: rgb(160, 161, 163);
     min-height: 100px;
     min-width: 100px;
     position: absolute;
     left: 0;
     top: 0;
-    border: 1px solid green;
+    border: 1px solid rgb(55, 35, 143);
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
@@ -41,7 +41,7 @@ border: none;
 
 .sticker .bar:hover {
 cursor: move;
-background: rgb(117, 156, 117);
+background: rgb(59, 64, 129);
 
 }
 
