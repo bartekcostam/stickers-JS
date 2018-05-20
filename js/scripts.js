@@ -72,7 +72,7 @@ var draggedEl,
     };
 
     createNote();
-    addNoteBtnEl = document.querySelector('.addNoteBtn');
+    addNoteBtnEl = document.querySelector('#addNoteBtn');
     addNoteBtnEl.addEventListener('click', createNote, false);
     document.addEventListener('mousemove', onDrag, false);
     document.addEventListener('mouseup', onDragEnd, false);
